@@ -1,0 +1,6 @@
+h
+loadfile XMC4500-Cmake.hex
+r
+g
+q
+

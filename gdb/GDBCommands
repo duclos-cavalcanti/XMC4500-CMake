@@ -1,1 +1,6 @@
+file XMC4500-Cmake.elf
+target remote localhost:2331
+monitor reset
+load
+break main
 set confirm off
