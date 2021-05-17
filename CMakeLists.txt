@@ -31,6 +31,7 @@ set(PROJECT_INCLUDES
     ${XMC_LIB_DIR}/USBlib/USB/Core/XMC4000
     ${PROJECT_SOURCE_DIR}/include
 )
+
 # May well have to include these, they were an array to the VPATH
 # variable from the Makefile used to port this cmake project.
 # Lets see.
@@ -97,10 +98,14 @@ ADD_CUSTOM_TARGET("flash" DEPENDS
 ADD_DEPENDENCIES(flash ${PROJECT_ELF_FILE})
 
 # Debug
+set(OPENOCD_BOARD "board/xmc4500-relax.cfg")
 ADD_CUSTOM_TARGET("debug"
     COMMAND JLinkGDBServer -device XMC${XMC_SERIES} -endian little -if SWD -speed 1000 -halt -logtofile -log JLinkLog -silent -vd &
 	COMMAND sleep 1
 	COMMAND sh -ci "arm-none-eabi-gdb -quiet -tui -command=${PROJECT_SOURCE_DIR}/gdb/GDBCommands"
 	COMMAND killall JLinkGDBServer
+
+    # COMMAND openocd -f ${OPENOCD_BOARD} >/dev/null 2>&1 & sleep 2
+    # COMMAND arm-none-eabi-gdb -quiet -tui -command=${PROJECT_SOURCE_DIR}/gdb/GDBCommands -se ${PROJECT_ELF_FILE}
 )
 ADD_DEPENDENCIES(debug flash)

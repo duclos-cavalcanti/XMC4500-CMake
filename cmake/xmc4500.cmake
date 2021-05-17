@@ -2,6 +2,7 @@
 set (XMC_SERIES 4500)
 set (XMC_PACKAGE F100)
 set (XMC_SIZE 1024)
+
 # Set cross compilation information
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
