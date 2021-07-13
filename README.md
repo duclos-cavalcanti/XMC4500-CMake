@@ -1,8 +1,12 @@
 # Developing on Infineon's XMC4500 Relax Lite Kit
+Bare CMake project to develop on Infineon's XMC4500 Relax Kit Lite. Repo's main objective was to understand the toolchain process involved to begin developing on it.
 
 ## Dependencies
 Will be using [jlink](https://www.segger.com/products/debug-probes/j-link/technology/flash-download/) to communicate with the device.
-`make cmake arm-none-eabi-gcc arm-none-eabi-newlib arm-none-eabi-gdb jlink debtap gcc lm4flash`
+
+```
+make cmake arm-none-eabi-gcc arm-none-eabi-newlib arm-none-eabi-gdb jlink debtap gcc lm4flash
+```
 
 ## Install
 Dependencies are based on a Arch Linux system, should work on any Linux distro as long as

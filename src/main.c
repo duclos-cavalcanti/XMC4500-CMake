@@ -73,7 +73,7 @@ morse_key_t MESSAGE[MESSAGE_SIZE] = {
     {   'N', "-."   ,   {DASH, DOT}             , {SPACE_SIGNALS_PERIOD, SPACE_WORDS_PERIOD},                                                   2   },
     {   'M', "--"   ,   {DASH, DASH}            , {SPACE_SIGNALS_PERIOD, SPACE_LETTERS_PERIOD},                                                 2   },
     {   'O', "---"  ,   {DASH, DASH, DASH}      , {SPACE_SIGNALS_PERIOD, SPACE_SIGNALS_PERIOD, SPACE_LETTERS_PERIOD},                           3   },
-    {   'R', ".-."  ,   {DOT, DASH, DOT}       , {SPACE_SIGNALS_PERIOD, SPACE_SIGNALS_PERIOD, SPACE_LETTERS_PERIOD},                           3   },
+    {   'R', ".-."  ,   {DOT, DASH, DOT}        , {SPACE_SIGNALS_PERIOD, SPACE_SIGNALS_PERIOD, SPACE_LETTERS_PERIOD},                           3   },
     {   'S', "...." ,   {DOT, DOT, DOT}         , {SPACE_SIGNALS_PERIOD, SPACE_SIGNALS_PERIOD, SPACE_LETTERS_PERIOD},                           3   },
     {   'E', "."    ,   {DOT}                   , {DUD},                                                                                        1   }
 };
@@ -136,15 +136,15 @@ int main(void){
 
             if((EndOfIndOrTotalTrans(cur_lett, cur_signal_total_size) || 
                (EndOfIndOrTotalTrans(cur_num, cur_signal_total_size) && !STRING_ONGOING)) &&
-               (EndOfIndOrTotalTrans(cur_periods, cur_signal_len))) { //If its the end of a single component of the MS
+               (EndOfIndOrTotalTrans(cur_periods, cur_signal_len))) { // If its the end of a single component of the MS
                 MORSE_TRANSMISSION_ONGOING=0;
-                cur_periods=0; //Resets the index of current periods
-                cur_lett=0;    //Resets the index of morse letters
-                cur_num=0;    //Resets the index of morse numbers
+                cur_periods=0;  // Resets the index of current periods
+                cur_lett=0;     // Resets the index of morse letters
+                cur_num=0;      // Resets the index of morse numbers
                 TurnOffLed();
                 ResetTicks();
             }
-            else if(EndOfIndOrTotalTrans(cur_periods, cur_signal_len)) { //If its the end of a single component of the MS
+            else if(EndOfIndOrTotalTrans(cur_periods, cur_signal_len)) { // If its the end of a single component of the MS
                 cur_periods=0;
                 ++cur_lett;
                 ++cur_num;

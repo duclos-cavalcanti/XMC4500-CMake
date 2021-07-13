@@ -19,9 +19,9 @@ set(USB_LIBDIR ${XMC_LIBDIR}/ThirdPartyLibraries/USBlib/USB)
 include(cmake/xmc4500.cmake)
 
 set(PROJECT_INCLUDES
-    ${XMC_LIB_DIR}/CMSIS/Include                                    # CMSIS headers
-    ${XMC_LIB_DIR}/CMSIS/Infineon/XMC${XMC_SERIES}_series/Include/  # Device Specific headers
-    ${XMC_LIB_DIR}/XMCLib/inc                                       # XMClib headers
+    ${XMC_LIB_DIR}/CMSIS/Include                                    # CMSIS Generic headers
+    ${XMC_LIB_DIR}/CMSIS/Infineon/XMC${XMC_SERIES}_series/Include/  # CMISIS-XMC-Device Specific headers
+    ${XMC_LIB_DIR}/XMCLib/inc                                       # XMC Specific headers
     ${XMC_LIB_DIR}/USBlib/USB                                       # USB Libs
     ${XMC_LIB_DIR}/USBlib/USB/Class
     ${XMC_LIB_DIR}/USBlib/USB/Class/Common
@@ -31,6 +31,7 @@ set(PROJECT_INCLUDES
     ${XMC_LIB_DIR}/USBlib/USB/Core/XMC4000
     ${PROJECT_SOURCE_DIR}/include
 )
+include_directories(${PROJECT_INCLUDES})
 
 # May well have to include these, they were an array to the VPATH
 # variable from the Makefile used to port this cmake project.
@@ -58,8 +59,6 @@ set(PROJECT_INCLUDES
 # ${USB_LIBDIR}/Common
 # ${USB_LIBDIR}/Core
 # ${USB_LIBDIR}/Core/XMC4000
-
-include_directories(${PROJECT_INCLUDES})
 
 file (GLOB USER_SOURCES src/*.c)
 set (START_SOURCES 
