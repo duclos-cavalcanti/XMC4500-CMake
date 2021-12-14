@@ -65,10 +65,12 @@ set (START_SOURCES
     ${XMC_LIB_DIR}/CMSIS/Infineon/XMC4500_series/Source/GCC/startup_XMC${XMC_SERIES}.S
     ${XMC_LIB_DIR}/CMSIS/Infineon/XMC4500_series/Source/system_XMC${XMC_SERIES}.c
     )
+
 set (XMC_SOURCES 
     ${XMC_LIB_DIR}/XMCLib/src/xmc_gpio.c
     ${XMC_LIB_DIR}/XMCLib/src/xmc4_gpio.c
     )
+
 set (THIRD_SOURCES 
     ${XMC_LIB_DIR}/ThirdPartyLibraries/Newlib/syscalls.c
     )
